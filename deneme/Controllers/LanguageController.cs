@@ -21,7 +21,6 @@ namespace deneme.Controllers
         {
             _languageBusiness = languageBusiness;
         }
-        
         [HttpGet("GetLanguages")]
         public List<LanguageDto> GetItems()
         {
