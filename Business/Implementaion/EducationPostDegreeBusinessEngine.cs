@@ -19,13 +19,13 @@ namespace Business.Implementaion
         }
         public Result<List<EducationPostDegreeDto>> GetItems()
         {
-            List<EducationPostDegreeDto> educationDegrees = new List<EducationPostDegreeDto>();
-            var data = _uow.educationDegrees.GetAll().ToList();
+            List<EducationPostDegreeDto> educationPostDegrees = new List<EducationPostDegreeDto>();
+            var data = _uow.educationPostDegrees.GetAll().ToList();
             if (data != null)
             {
                 foreach (var item in data)
                 {
-                    educationDegrees.Add(new EducationPostDegreeDto()
+                    educationPostDegrees.Add(new EducationPostDegreeDto()
                     {
 
                         PostgraduationId = item.PostgraduationId,
@@ -43,10 +43,10 @@ namespace Business.Implementaion
                     });
 
                 }
-                return new Result<List<EducationPostDegreeDto>>(true, ResultConstant.RecordFound, educationDegrees);
+                return new Result<List<EducationPostDegreeDto>>(true, ResultConstant.RecordFound, educationPostDegrees);
 
             }
-            return new Result<List<EducationPostDegreeDto>>(false, ResultConstant.RecordNotCreated, educationDegrees);
+            return new Result<List<EducationPostDegreeDto>>(false, ResultConstant.RecordNotCreated, educationPostDegrees);
         }
     }
 }

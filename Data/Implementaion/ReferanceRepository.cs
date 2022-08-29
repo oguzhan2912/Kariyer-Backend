@@ -1,4 +1,5 @@
-﻿using Data.DataContext;
+﻿using Common.DataContracts;
+using Data.DataContext;
 using Data.DbModel;
 using System;
 using System.Collections.Generic;
@@ -6,10 +7,10 @@ using System.Text;
 
 namespace Data.Implementaion
 {
-    public class ContactRepository : Repository<ContactInfo>, IContactRepository
+   public class ReferanceRepository : Repository<ReferanceInfo>, IReferanceRepository
     {
         private readonly denemeDbContext _db;
-        public ContactRepository(denemeDbContext db) : base(db)
+        public ReferanceRepository(denemeDbContext db) : base(db)
         {
             _db = db;
         }

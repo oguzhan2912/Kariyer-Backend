@@ -12,7 +12,12 @@ namespace Common.DataContracts
         IGeneralRepository generals { get; }
         IContactRepository contacts { get; }
         IEducationRepository educations { get; }
-        IEducationPostDegreeRepository educationDegrees { get; }
+        IEducationPostDegreeRepository educationPostDegrees { get; }
+        IEducationDegreeRepository educationDegrees { get; }
+        IReferanceRepository referances { get; }
+        ISkillRepository skills { get; }
+        IOtherRepository others { get; }
+        IPostWorkRepository postWorks { get; }
         void save();
     }
 }

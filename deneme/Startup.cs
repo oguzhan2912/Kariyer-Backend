@@ -40,7 +40,13 @@ namespace deneme
             services.AddScoped<IContactBusinessEngine, ContactBusinessEngine>();
             services.AddScoped<IGeneralBusinessEngine,GeneralBusinessEngine>(); 
             services.AddScoped<IEducationBusinessEngine, EducationBusinessEngine>();
+            services.AddScoped<IEducationDegreeBusinessEngine, EducationDegreeBusinessEngine>();
             services.AddScoped<IEducationPostDegreeBusinessEngine, EducationPostDegreeBusinessEngine>();
+            services.AddScoped<IReferanceBusinessEngine, ReferanceBusinessEngine>();
+            services.AddScoped<ISkillBusinessEngine, SkillBusinessEngine>();
+            services.AddScoped<IOtherBusinessEngine, OtherBusinessEngine>();
+            services.AddScoped<IPostWorkBusinessEngine, PostWorkBusinessEngine>();
+
 
             services.AddDbContext<denemeDbContext>(
             options => options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));

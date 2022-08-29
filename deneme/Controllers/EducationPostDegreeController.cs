@@ -20,7 +20,7 @@ namespace deneme.Controllers
             _educationPostDegreeBusiness = educationPostDegreeBusiness;
         }
 
-        [HttpGet("GetLanguages")]
+        [HttpGet("GetEducationPostDegrees")]
         public List<EducationPostDegreeDto> GetItems()
         {
             return _educationPostDegreeBusiness.GetItems().Data;

@@ -6,14 +6,14 @@ namespace Common.Dto
 {
     public class EducationDegreeDto
     {
-        /*Postgraduation*/
-        public string PostgraduationName { get; set; }
-        public DateTime PostgraduationGraduationDate { get; set; }
-        public string PostgraduationDepartment { get; set; }
-        public string PostgraduationCountry { get; set; }
-        public string PostgraduationState { get; set; }
-        public decimal PostgraduationGPA { get; set; }
-        public string PostgraduationNewSchool { get; set; }
-        public string PostgraduationNewDepartment { get; set; }
+        public int DegreeId { get; set; }
+        public string DegreeName { get; set; }
+        public DateTime DegreeGraduationDate { get; set; }
+        public string DegreeDepartment { get; set; }
+        public string DegreeCountry { get; set; }
+        public string DegreeState { get; set; }
+        public decimal DegreeGPA { get; set; }
+        public string DegreeNewSchool { get; set; }
+        public string DegreeNewDepartment { get; set; }
     }
 }

@@ -16,3 +16,4 @@ namespace Common.Dto
         public string PostgraduationNewSchool { get; set; }
         public string PostgraduationNewDepartment { get; set; }
     }
+}
