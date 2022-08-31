@@ -53,6 +53,8 @@ namespace Data.DbModel
         /*Connections*/
         public int? CVId { get; set; }
         public virtual CVInfo CVInfo { get; set; }
+        public int? BaseId { get; set; }
+        public virtual BaseCard Base { get; set; }
 
         public virtual ICollection<EducationDegreeInfo> EducationDegreeInfos { get; set; }
         public virtual ICollection<EducationPostDegreeInfo> EducationPostDegreeInfos { get; set; }

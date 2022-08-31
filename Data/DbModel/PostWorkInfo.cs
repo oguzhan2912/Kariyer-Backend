@@ -22,5 +22,7 @@ namespace Data.DbModel
         /*Connections*/
         public int? CVId { get; set; }
         public virtual CVInfo CVInfo { get; set; }
+        public int? BaseId { get; set; }
+        public virtual BaseCard Base { get; set; }
     }
 }

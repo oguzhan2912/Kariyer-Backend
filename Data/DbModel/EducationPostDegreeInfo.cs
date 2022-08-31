@@ -23,5 +23,7 @@ namespace Data.DbModel
         /*Connections*/
         public int? EducationId { get; set; }
         public virtual EducationInfo Education { get; set; }
+        public int? BaseId { get; set; }
+        public virtual BaseCard Base { get; set; }
     }
 }

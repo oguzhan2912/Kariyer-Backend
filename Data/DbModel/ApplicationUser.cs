@@ -9,6 +9,15 @@ namespace Data.DbModel
     public class ApplicationUser:IdentityUser
     {
         [Column(TypeName ="nvarchar(150)")]
-        public string FullName { get; set; }
+        public string Name { get; set; }
+
+        [Column(TypeName = "nvarchar(150)")]
+        public string Lastname { get; set; }
+
+        public int? BaseId { get; set; }
+
+        public virtual BaseCard Base { get; set; }
+
     }
 }
+ 

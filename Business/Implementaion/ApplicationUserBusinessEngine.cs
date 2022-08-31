@@ -29,7 +29,8 @@ namespace Business.Implementaion
             {
                 UserName = model.UserName,
                 Email = model.Email,
-                FullName = model.FullName
+                Name = model.Name,                
+                Lastname = model.Lastname
             };
 
             try

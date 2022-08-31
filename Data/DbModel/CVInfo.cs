@@ -20,5 +20,13 @@ namespace Data.DbModel
         public virtual ICollection<PostWorkInfo> PostWorkInfos { get; set; }
         public virtual ICollection<OtherInfo> OtherInfos { get; set; }
 
+        public int? UserId { get; set; }
+        public virtual ApplicationUser User { get; set; }
+        
+        public int? BaseId { get; set; }
+        public virtual BaseCard Base { get; set; }
+
+
+
     }
 }
