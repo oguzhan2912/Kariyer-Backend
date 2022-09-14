@@ -10,6 +10,7 @@ using Entities.Concreate;
 
 using Business.Concreate;
 using DataAccess.DataContext;
+using Autofac;
 
 namespace deneme
 {
@@ -99,7 +100,26 @@ namespace deneme
 
 
         }
-      
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            #region WAY-1 (Autofac Module)
+
+            // Add modules registrations.
+
+            builder.RegisterModule(new MyAutofacModule());
+            //builder.RegisterModule(new MyAutofacModule2());
+            //builder.RegisterModule(new MyAutofacModule3());
+
+            #endregion
+
+            #region WAY-2 (Direct Registration)
+
+            // Add services registrations.
+
+            builder.RegisterType<MyService>().As<IService>();
+
+            #endregion
+        }
 
 
     }
