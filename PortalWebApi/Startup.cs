@@ -11,6 +11,7 @@ using Entities.Concreate;
 using Business.Concreate;
 using DataAccess.DataContext;
 using Autofac;
+using Business.AutoFac;
 
 namespace deneme
 {
@@ -30,29 +31,16 @@ namespace deneme
         {
             services.AddCors();
 
-            services.AddControllers();           
-            
-            services.AddScoped< LanguageService>();
-            services.AddScoped< ContactService>();
-            services.AddScoped< GeneralService>(); 
-            services.AddScoped< EducationService>();
-            services.AddScoped< EducationDegreeService>();
-            services.AddScoped< EducationPostDegreeService>();
-            services.AddScoped< ReferanceService>();
-            services.AddScoped< SkillService>();
-            services.AddScoped< OtherService>();
-            services.AddScoped< PostWorkService>();                       
+            services.AddControllers();                 
+                                
             /*services
                 .AddIdentity<ApplicationUser, IdentityRole>()
                 .AddDefaultTokenProviders().
-                AddEntityFrameworkStores<PortalDbContext>();*/
-
-            services.AddScoped<ApplicationUserService>();
+                AddEntityFrameworkStores<PortalDbContext>();*/           
 
             services.AddDbContext<PortalDbContext>(
             options => options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
-
-           
+                     
 
         }
 
@@ -81,44 +69,23 @@ namespace deneme
                                 .AllowCredentials()
                              );
 
-            app.UseHttpsRedirection();
-            
+            app.UseHttpsRedirection();        
            
-
             app.UseAuthorization();
+
             app.UseAuthentication();
            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
                 ;
-            });
-
-           
-
-           
-
-
+            });     
         }
         public void ConfigureContainer(ContainerBuilder builder)
-        {
-            #region WAY-1 (Autofac Module)
+        {           
 
-            // Add modules registrations.
-
-            builder.RegisterModule(new MyAutofacModule());
-            //builder.RegisterModule(new MyAutofacModule2());
-            //builder.RegisterModule(new MyAutofacModule3());
-
-            #endregion
-
-            #region WAY-2 (Direct Registration)
-
-            // Add services registrations.
-
-            builder.RegisterType<MyService>().As<IService>();
-
-            #endregion
+            builder.RegisterModule(new BusinessAutoFacModule());
+                      
         }
 
 

@@ -9,15 +9,10 @@ namespace Core.Utilities.Result
         
         
 
-        public bool IsSuccess { get ; set ; }
-        public string MyProperty { get ; set ; }
-
+        public bool IsSuccess { get ; set ; }       
         public string Message { get; set; }
-
         public T Data { get; set; }
-
         public int TotalCount { get; set; }
-
         public Result(bool isSuccess,string message):
             this(isSuccess,message,default(T))
         {

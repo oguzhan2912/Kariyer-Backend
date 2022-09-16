@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Business.Concreate
 {
-    public class ReferanceService : IService<Referance>
+    public class ReferanceService : IReferanceService
     {
         /*
         private readonly IUnitOfWork _uow;

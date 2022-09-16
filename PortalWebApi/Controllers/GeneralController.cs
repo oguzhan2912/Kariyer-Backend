@@ -10,8 +10,8 @@ namespace deneme.Controllers
     public class GeneralController : ControllerBase
     {
 
-        private readonly IService<General> _generalBusiness;
-        public GeneralController(IService<General> generalBusiness)
+        private readonly IGeneralService _generalBusiness;
+        public GeneralController(IGeneralService generalBusiness)
         {
             _generalBusiness = generalBusiness;
         }

@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Business.Concreate
 {
-    public class EducationService: IService<Education>
+    public class EducationService:IEducationService
     {
        /* private readonly IUnitOfWork _uow;
 

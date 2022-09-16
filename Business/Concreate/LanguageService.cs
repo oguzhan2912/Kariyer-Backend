@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace Business.Concreate
 {
-    public class LanguageService : IService<Language>
+    public class LanguageService : ILanguageService
     {
         /*
         private readonly IUnitOfWork _uow;

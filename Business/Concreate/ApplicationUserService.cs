@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Linq;
 using System.Threading.Tasks;
-using Business.Contracts;
+using Business.Abstract;
 using Core.Utilities.Result;
 using Entities.Concreate;
 using Microsoft.AspNetCore.Identity;

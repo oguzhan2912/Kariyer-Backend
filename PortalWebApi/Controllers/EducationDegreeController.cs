@@ -9,8 +9,8 @@ namespace deneme.Controllers
     [ApiController]
     public class EducationDegreeController : ControllerBase
     {
-        private readonly IService<EducationDegree> _educationDegreeBusiness;
-        public EducationDegreeController(IService<EducationDegree> educationDegreeBusiness)
+        private readonly IEducationDegreeService _educationDegreeBusiness;
+        public EducationDegreeController(IEducationDegreeService educationDegreeBusiness)
         {
             _educationDegreeBusiness = educationDegreeBusiness;
         }

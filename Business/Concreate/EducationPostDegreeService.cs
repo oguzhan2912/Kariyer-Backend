@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Business.Concreate
 {
-    public class EducationPostDegreeService : IService<EducationPostDegree>
+    public class EducationPostDegreeService : IEducationPostDegreeService
     {
         /*
         private readonly IUnitOfWork _uow;

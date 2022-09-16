@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Business.Concreate
 {
-   public class OtherService: IService<Other>
+   public class OtherService: IOtherService
     { /*
         private readonly IUnitOfWork _uow;
 

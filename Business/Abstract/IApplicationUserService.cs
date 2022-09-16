@@ -2,7 +2,7 @@
 using Entities.Concreate;
 using System.Threading.Tasks;
 
-namespace Business.Contracts
+namespace Business.Abstract
 {
     public interface IApplicationUserService
     {

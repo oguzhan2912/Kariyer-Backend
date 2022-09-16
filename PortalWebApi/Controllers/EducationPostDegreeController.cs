@@ -11,8 +11,8 @@ namespace deneme.Controllers
     public class EducationPostDegreeController : ControllerBase
     {
 
-        private readonly IService<EducationPostDegree> _educationPostDegreeBusiness;
-        public EducationPostDegreeController(IService<EducationPostDegree> educationPostDegreeBusiness)
+        private readonly IEducationPostDegreeService _educationPostDegreeBusiness;
+        public EducationPostDegreeController(IEducationPostDegreeService educationPostDegreeBusiness)
         {
             _educationPostDegreeBusiness = educationPostDegreeBusiness;
         }

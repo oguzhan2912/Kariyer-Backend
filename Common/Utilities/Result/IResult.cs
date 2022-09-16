@@ -8,6 +8,6 @@ namespace Core.Utilities.Result
     {
 
         bool IsSuccess { get; set; }
-        string MyProperty { get; set; }
+        
     }
 }

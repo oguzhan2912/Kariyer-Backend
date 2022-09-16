@@ -11,9 +11,9 @@ namespace deneme.Controllers
     public class LanguageController : ControllerBase
     {
 
-        private readonly IService<Language> _languageBusiness;
+        private readonly ILanguageService _languageBusiness;
       
-        public LanguageController(IService<Language> languageBusiness)
+        public LanguageController(ILanguageService languageBusiness)
         {
             _languageBusiness = languageBusiness;
            

@@ -10,8 +10,8 @@ namespace deneme.Controllers
     [ApiController]
     public class PostWorkController : ControllerBase
     {
-        private readonly IService<PostWork> _postWorkBusiness;
-        public PostWorkController(IService<PostWork> postWorkBusiness)
+        private readonly IPostWorkService _postWorkBusiness;
+        public PostWorkController(IPostWorkService postWorkBusiness)
         {
             _postWorkBusiness = postWorkBusiness;
         }

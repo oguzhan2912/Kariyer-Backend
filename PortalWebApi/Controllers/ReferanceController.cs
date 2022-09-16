@@ -10,8 +10,8 @@ namespace deneme.Controllers
     [ApiController]
     public class ReferanceController : ControllerBase
     {
-        private readonly IService<Referance> _referanceBusiness;
-        public ReferanceController(IService<Referance> referanceBusiness)
+        private readonly IReferanceService _referanceBusiness;
+        public ReferanceController(IReferanceService referanceBusiness)
         {
             _referanceBusiness = referanceBusiness;
         }

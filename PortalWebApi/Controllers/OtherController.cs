@@ -9,8 +9,8 @@ namespace deneme.Controllers
     [ApiController]
     public class OtherController : ControllerBase
     {
-        private readonly IService<Other> _otherBusiness;
-        public OtherController(IService<Other> otherBusiness)
+        private readonly IOtherService _otherBusiness;
+        public OtherController(IOtherService otherBusiness)
         {
             _otherBusiness = otherBusiness;
         }

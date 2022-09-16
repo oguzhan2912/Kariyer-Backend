@@ -10,8 +10,8 @@ namespace deneme.Controllers
     [ApiController]
     public class SkillController : ControllerBase
     {
-        private readonly IService<Skill> _skillBusiness;
-        public SkillController(IService<Skill> skillBusiness)
+        private readonly ISkillService _skillBusiness;
+        public SkillController(ISkillService skillBusiness)
         {
             _skillBusiness = skillBusiness;
         }

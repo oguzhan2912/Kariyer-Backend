@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Business.Concreate
 {
-     public class SkillService : IService<Skill>
+     public class SkillService : ISkillService
     {
        
         public Result<List<Skill>> GetItems()

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Business.Contracts;
+
 using Entities.Concreate;
+using Business.Abstract;
 
 namespace deneme.Controllers
 {

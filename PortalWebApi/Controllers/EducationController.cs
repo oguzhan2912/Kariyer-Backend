@@ -8,8 +8,8 @@ namespace deneme.Controllers
     [ApiController]
     public class EducationController : ControllerBase
     {
-        private readonly IService<Education> _educationBusiness;
-        public EducationController(IService<Education> educationBusiness)
+        private readonly IEducationService _educationBusiness;
+        public EducationController(IEducationService educationBusiness)
         {
             _educationBusiness = educationBusiness;
         }

@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Business.Concreate
 {
-    public class ContactService: IService<Contact>
+    public class ContactService: IContactService
     {
         //private readonly IUnitOfWork _uow;
 
