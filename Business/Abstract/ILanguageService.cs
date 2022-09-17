@@ -6,6 +6,12 @@ namespace Business.Abstract
 {
     public interface ILanguageService
     {
-        Result<List<Language>> GetItems();
+       
+        IResult Add(Language language);
+        IResult Delete(Language language);
+        IResult Update(Language language);
+        IDataResult<List<Language>> GetList();
+        IDataResult<Language> GetById(int languageId);
+        IDataResult<List<Language>> GetByExamList(string exam);
     }
 }

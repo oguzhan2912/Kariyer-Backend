@@ -2,6 +2,8 @@
 
 using Core.Utilities.Constant;
 using Core.Utilities.Result;
+using DataAccess.Abstract;
+using DataAccess.Concreate;
 using Entities.Concreate;
 using System;
 using System.Collections.Generic;
@@ -11,64 +13,43 @@ namespace Business.Concreate
 {
     public class LanguageService : ILanguageService
     {
-        /*
-        private readonly IUnitOfWork _uow;
-
-        public LanguageBusinessEngine(IUnitOfWork uow)
+        private ILanguageDao _languageDao;
+        public LanguageService(ILanguageDao languageDao)
         {
-            _uow = uow;
+            _languageDao = languageDao;
         }
-        */
-        public Result<List<Language>> GetItems()
-        {
-            Language languages = new Language();
-            var data = languages;//;.GetAll().ToList();
-            if (data != null)
-            {/*
-                List<Language> returnModel = new List<Language>();
-                foreach (var item in data)
-                {
-                    returnModel.Add(new Language()
-                    {
-                        Id = item.Id,
-                        LanguageName=item.LanguageName,
-                        ReadingLvl=item.ReadingLvl,
-                        SpeakingLvl=item.SpeakingLvl,
-                        UnderstandingLvl=item.UnderstandingLvl,
-                        WritingLvl=item.WritingLvl,
-                        CVId=item.CVId,
-                    }); 
-                }*/
-                return new Result<List<Language>>(true, ResultConstant.RecordFound);
-            }
-            return new Result<List<Language>>(false, ResultConstant.RecordNotCreated);
+        public IResult Add(Language language)
+        {            
+            _languageDao.Add(language);
+            return new SuccessResult(ResultConstant.RecordCreated);
+
         }
-        public Result<bool> SaveLanguage(Language language)
+
+        public IResult Delete(Language language)
+        {            
+            _languageDao.Delete(language);
+            return new SuccessResult(ResultConstant.RecordCreated);
+        }
+
+        public IDataResult<List<Language>> GetByExamList(string exam)
         {
-            try
-            {
-                Language languageModel = new Language();
+            return new SuccessDataResult<List<Language>>(_languageDao.GetAll(w => w.LanguageExam== exam).ToList());
+        }
 
-                
-                languageModel.LanguageName = language.LanguageName;
-                languageModel.Id = Convert.ToInt32(language.Id);
-                languageModel.ReadingLvl = language.ReadingLvl;
-                languageModel.SpeakingLvl = language.SpeakingLvl;
-                languageModel.UnderstandingLvl = language.UnderstandingLvl;
-                languageModel.WritingLvl = language.WritingLvl;
-                
-                /*
-                _uow.languages.Add(languageModel);                
-                _uow.Save();
-                               */
+        public IDataResult<Language> GetById(int languageId)
+        {
+            return new SuccessDataResult<Language>(_languageDao.Get(w => w.Id ==languageId)) ;
+        }
 
-                return new Result<bool>(true, ResultConstant.RecordCreated);
-            }
-            catch (System.Exception ex)
-            {
+        public IDataResult<List<Language>> GetList()
+        {
+            return new SuccessDataResult<List<Language>>(_languageDao.GetAll().ToList());
+        }
 
-                return new Result<bool>(false, ex.Message.ToString());
-            }
+        public IResult Update(Language language)
+        {
+            _languageDao.Update(language);
+            return new SuccessResult(ResultConstant.RecordCreated);
         }
     }
 }

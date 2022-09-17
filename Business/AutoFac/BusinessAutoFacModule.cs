@@ -40,7 +40,8 @@ namespace Business.AutoFac
                .InstancePerLifetimeScope();
             builder.RegisterType<SkillService>().As<ISkillService>()
                .InstancePerLifetimeScope();
-
+            
+            //DAOLARI EKLE!!
 
 
             //  builder.RegisterType<MyService>().As<IService>()

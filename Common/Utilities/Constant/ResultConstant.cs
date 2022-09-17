@@ -5,8 +5,12 @@ namespace Core.Utilities.Constant
     {
         public const string RecordCreated = "Kayıt Oluşturuldu";
 
+        public const string RecordNotCreated = "Kayıt Oluşturulamadı";
+
         public const string RecordFound = "Kayıt Bulundu";
 
-        public const string RecordNotCreated = "Kayıt Oluşturulamadı";
+        public const string RecordNotFound = "Kayıt Bulunamadı";
+
+        
     }
 }
