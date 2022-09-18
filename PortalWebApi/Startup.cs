@@ -30,17 +30,14 @@ namespace deneme
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-
-            services.AddControllers();                 
-                                
-            /*services
-                .AddIdentity<ApplicationUser, IdentityRole>()
-                .AddDefaultTokenProviders().
-                AddEntityFrameworkStores<PortalDbContext>();*/           
-
+            services.AddControllers();                                    
+            
+            /*
             services.AddDbContext<PortalDbContext>(
-            options => options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
-                     
+            options => options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));*/
+            
+            services.AddDbContext<PortalDbContext>(
+            options => options.UseSqlServer("name=ConnectionStrings:IdentityConnection"));
 
         }
 
@@ -83,9 +80,7 @@ namespace deneme
         }
         public void ConfigureContainer(ContainerBuilder builder)
         {           
-
-            builder.RegisterModule(new BusinessAutoFacModule());
-                      
+            builder.RegisterModule(new BusinessAutoFacModule());                      
         }
 
 

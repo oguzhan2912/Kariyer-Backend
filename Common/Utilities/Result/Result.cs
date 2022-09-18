@@ -14,16 +14,14 @@ namespace Core.Utilities.Result
 
         public Result(bool isSuccess)
         {
-            IsSuccess = isSuccess;     //Sadece bool dönmek için.       
-          
+            IsSuccess = isSuccess;     //Sadece bool dönmek için.      
         }       
 
         public bool IsSuccess { get ;  }       
         public string Message { get; }
 
 
-        //public T Data { get; set; }
-        //public int TotalCount { get; set; }
+        
         
         
     }

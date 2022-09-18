@@ -6,6 +6,9 @@ namespace Business.Abstract
 {
     public interface IPostWorkService
     {
-        Result<List<PostWork>> GetItems();
+        IResult Add(PostWork postWork);
+        IResult Delete(PostWork postWork);
+        IResult Update(PostWork postWork);
+        IDataResult<List<PostWork>> GetList();
     }
 }

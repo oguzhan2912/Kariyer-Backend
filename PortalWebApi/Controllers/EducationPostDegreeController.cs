@@ -10,17 +10,35 @@ namespace deneme.Controllers
     [ApiController]
     public class EducationPostDegreeController : ControllerBase
     {
-
         private readonly IEducationPostDegreeService _educationPostDegreeBusiness;
+
         public EducationPostDegreeController(IEducationPostDegreeService educationPostDegreeBusiness)
         {
             _educationPostDegreeBusiness = educationPostDegreeBusiness;
         }
 
         [HttpGet("GetEducationPostDegrees")]
-        public List<EducationPostDegree> GetItems()
+        public List<EducationPostDegree> GetEducationPostDegree()
         {
-            return _educationPostDegreeBusiness.GetItems().Data;
+            return _educationPostDegreeBusiness.GetList().Data;
+        }
+
+        [HttpPost("SaveEducationPostDegrees")]
+        public bool SaveEducationPostDegree([FromBody] EducationPostDegree educationPostDegree)
+        {
+            return _educationPostDegreeBusiness.Add(educationPostDegree).IsSuccess;
+        }
+
+        [HttpDelete("DeleteEducationPostDegrees")]
+        public bool DeleteEducationPostDegree([FromBody] EducationPostDegree educationPostDegree)
+        {
+            return _educationPostDegreeBusiness.Delete(educationPostDegree).IsSuccess;
+        }
+
+        [HttpPut("UpdateEducationPostDegrees")]
+        public bool UpdateEducationPostDegree([FromBody] EducationPostDegree educationPostDegree)
+        {
+            return _educationPostDegreeBusiness.Update(educationPostDegree).IsSuccess;
         }
     }
 }

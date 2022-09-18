@@ -7,6 +7,9 @@ namespace Business.Abstract
 {
    public interface IContactService
     {
-        Result<List<Contact>> GetItems();
+        IResult Add(Contact contact);
+        IResult Delete(Contact contact);
+        IResult Update(Contact contact);
+        IDataResult<List<Contact>> GetList();
     }
 }

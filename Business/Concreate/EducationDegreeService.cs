@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Core.Utilities.Constant;
 using Core.Utilities.Result;
+using DataAccess.Abstract;
 using Entities.Concreate;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,43 +10,34 @@ namespace Business.Concreate
 {
     public class EducationDegreeService : IEducationDegreeService
     {
-        /*
-         * private readonly IUnitOfWork _uow;
+        private IEducationDegreeDao _educationDegreeDao;
 
-        public EducationDegreeService(IUnitOfWork uow)
+        public EducationDegreeService(IEducationDegreeDao educationDegreeDao)
         {
-            _uow = uow;
-        }*/
-        public Result<List<EducationDegree>> GetItems()
+            _educationDegreeDao = educationDegreeDao;
+        }
+
+        public IResult Add(EducationDegree educationDegree)
         {
-            List<EducationDegree> educationDegrees = new List<EducationDegree>();
-            var data = educationDegrees;//_uow.educationDegrees.GetAll().ToList();
-            if (data != null)
-            {
-                foreach (var item in data)
-                {
-                    educationDegrees.Add(new EducationDegree()
-                    {
+            _educationDegreeDao.Add(educationDegree);//Entity Frameworku kullanarak Add metodu ile kolay bir şekilde save işlemi yaptık.
+            return new SuccessResult(ResultConstant.RecordCreated);
+        }
 
-                        Id = item.Id,
-                        DegreeName = item.DegreeName,
-                        DegreeGraduationDate = item.DegreeGraduationDate,
-                        DegreeDepartment = item.DegreeDepartment,
-                        DegreeCountry = item.DegreeCountry,
-                        DegreeState = item.DegreeState,
-                        DegreeGPA = item.DegreeGPA,
-                        DegreeNewSchool = item.DegreeNewSchool,
-                        DegreeNewDepartment = item.DegreeNewDepartment
+        public IResult Delete(EducationDegree educationDegree)
+        {
+            _educationDegreeDao.Delete(educationDegree);
+            return new SuccessResult(ResultConstant.RecordDeleted);
+        }
 
+        public IDataResult<List<EducationDegree>> GetList()
+        {
+            return new SuccessDataResult<List<EducationDegree>>(_educationDegreeDao.GetAll().ToList());
+        }
 
-
-                    });
-
-                }
-                return new Result<List<EducationDegree>>(true, ResultConstant.RecordFound, educationDegrees);
-
-            }
-            return new Result<List<EducationDegree>>(false, ResultConstant.RecordNotCreated, educationDegrees);
+        public IResult Update(EducationDegree educationDegree)
+        {
+            _educationDegreeDao.Update(educationDegree);
+            return new SuccessResult(ResultConstant.RecordUpdated);
         }
     }
 }

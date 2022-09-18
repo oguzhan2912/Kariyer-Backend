@@ -9,17 +9,36 @@ namespace deneme.Controllers
     [ApiController]
     public class GeneralController : ControllerBase
     {
-
         private readonly IGeneralService _generalBusiness;
+
         public GeneralController(IGeneralService generalBusiness)
         {
             _generalBusiness = generalBusiness;
         }
 
         [HttpGet("GetGenerals")]
-        public List<General> GetItems()
+        public List<General> GetGeneral()
         {
-            return _generalBusiness.GetItems().Data;
+            return _generalBusiness.GetList().Data;
         }
+
+        [HttpPost("SaveGenerals")]
+        public bool SaveGeneral([FromBody] General general)
+        {
+            return _generalBusiness.Add(general).IsSuccess;
+        }
+
+        [HttpDelete("DeleteGenerals")]
+        public bool DeleteGeneral([FromBody] General general)
+        {
+            return _generalBusiness.Delete(general).IsSuccess;
+        }
+
+        [HttpPut("UpdateGenerals")]
+        public bool UpdateGeneral([FromBody] General general)
+        {
+            return _generalBusiness.Update(general).IsSuccess;
+        }
+
     }
 }

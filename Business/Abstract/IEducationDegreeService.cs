@@ -6,6 +6,9 @@ namespace Business.Abstract
 {
     public interface IEducationDegreeService
     {
-        Result<List<EducationDegree>> GetItems();
+        IResult Add(EducationDegree educationDegree);
+        IResult Delete(EducationDegree educationDegree);
+        IResult Update(EducationDegree educationDegree);
+        IDataResult<List<EducationDegree>> GetList();
     }
 }

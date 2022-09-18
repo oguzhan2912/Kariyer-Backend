@@ -1,46 +1,41 @@
 ﻿using Business.Abstract;
 using Core.Utilities.Constant;
 using Core.Utilities.Result;
+using DataAccess.Abstract;
 using Entities.Concreate;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Business.Concreate
 {
-   public class OtherService: IOtherService
-    { /*
-        private readonly IUnitOfWork _uow;
-
-        public OtherBusinessEngine(IUnitOfWork uow)
+    public class OtherService : IOtherService
+    {
+        private IOtherDao _otherDao;
+        public OtherService(IOtherDao otherDao)
         {
-            _uow = uow;
+            _otherDao = otherDao;
         }
-        */
-        public Result<List<Other>> GetItems()
+        public IResult Add(Other other)
         {
-            List<Other> others = new List<Other>();
-            var data = others;// _uow.others.GetAll().ToList();
-            if (data != null)
-            {
-                foreach (var item in data)
-                {
-                    others.Add(new Other()
-                    {
-                        Id = item.Id,
-                        Interests = item.Interests,
-                        MemberGNO = item.MemberGNO,
-                        TravelContinents = item.TravelContinents,
-                        Cigaratte = item.Cigaratte,
-                        MilitaryStatus = item.MilitaryStatus,
-                        DefermentDate = item.DefermentDate,
-                        CompletionDate = item.CompletionDate
-                        
-                    });
+            _otherDao.Add(other);
+            return new SuccessResult(ResultConstant.RecordCreated);
+        }
 
-                }
-                return new Result<List<Other>>(true, ResultConstant.RecordFound, others);
+        public IResult Delete(Other other)
+        {
+            _otherDao.Delete(other);
+            return new SuccessResult(ResultConstant.RecordDeleted);
+        }
 
-            }
-            return new Result<List<Other>>(false, ResultConstant.RecordNotCreated, others);
+        public IDataResult<List<Other>> GetList()
+        {
+            return new SuccessDataResult<List<Other>>(_otherDao.GetAll().ToList());
+        }
+
+        public IResult Update(Other other)
+        {
+            _otherDao.Update(other);
+            return new SuccessResult(ResultConstant.RecordUpdated);
         }
     }
 }

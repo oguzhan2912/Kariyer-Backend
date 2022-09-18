@@ -5,7 +5,10 @@ namespace Business.Abstract
 {
     public interface ISkillService
     {
-        Result<List<Skill>> GetItems();
+        IResult Add(Skill skill);
+        IResult Delete(Skill skill);
+        IResult Update(Skill skill);
+        IDataResult<List<Skill>> GetList();
 
     }
 }

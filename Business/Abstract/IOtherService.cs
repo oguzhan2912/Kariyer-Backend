@@ -6,6 +6,9 @@ namespace Business.Abstract
 {
     public interface IOtherService
     {
-        Result<List<Other>> GetItems();
+        IResult Add(Other other);
+        IResult Delete(Other other);
+        IResult Update(Other other);
+        IDataResult<List<Other>> GetList();
     }
 }

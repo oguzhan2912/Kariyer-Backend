@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Core.Utilities.Constant;
 using Core.Utilities.Result;
+using DataAccess.Abstract;
 using Entities.Concreate;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,44 +10,32 @@ namespace Business.Concreate
 {
     public class EducationPostDegreeService : IEducationPostDegreeService
     {
-        /*
-        private readonly IUnitOfWork _uow;
-
-        public EducationPostDegreeService(IUnitOfWork uow)
+        private IEducationPostDegreeDao _educationPostDegreeDao;
+        public EducationPostDegreeService(IEducationPostDegreeDao educationPostDegreeDao)
         {
-            _uow = uow;
+            _educationPostDegreeDao = educationPostDegreeDao;
         }
-        */
-        public Result<List<EducationPostDegree>> GetItems()
+        public IResult Add(EducationPostDegree educationPostDegree)
         {
-            List<EducationPostDegree> educationPostDegrees = new List<EducationPostDegree>();
-            var data = educationPostDegrees; //_uow.educationPostDegrees.GetAll().ToList();
-            if (data != null)
-            {
-                foreach (var item in data)
-                {
-                    educationPostDegrees.Add(new EducationPostDegree()
-                    {
+            _educationPostDegreeDao.Add(educationPostDegree);
+            return new SuccessResult(ResultConstant.RecordCreated);
+        }
 
-                        Id = item.Id,
-                        PostgraduationName = item.PostgraduationName,
-                        PostgraduationGraduationDate = item.PostgraduationGraduationDate,
-                        PostgraduationDepartment = item.PostgraduationDepartment,
-                        PostgraduationCountry = item.PostgraduationCountry,
-                        PostgraduationState = item.PostgraduationState,
-                        PostgraduationGPA = item.PostgraduationGPA,
-                        PostgraduationNewSchool = item.PostgraduationNewSchool,
-                        PostgraduationNewDepartment = item.PostgraduationNewDepartment
+        public IResult Delete(EducationPostDegree educationPostDegree)
+        {
+            _educationPostDegreeDao.Delete(educationPostDegree);
+            return new SuccessResult(ResultConstant.RecordDeleted);
+        }
 
+        public IDataResult<List<EducationPostDegree>> GetList()
+        {
+            return new SuccessDataResult<List<EducationPostDegree>>(_educationPostDegreeDao.GetAll().ToList());
+        }
 
-
-                    });
-
-                }
-                return new Result<List<EducationPostDegree>>(true, ResultConstant.RecordFound, educationPostDegrees);
-
-            }
-            return new Result<List<EducationPostDegree>>(false, ResultConstant.RecordNotCreated, educationPostDegrees);
+        public IResult Update(EducationPostDegree educationPostDegree)
+        {
+            _educationPostDegreeDao.Update(educationPostDegree);
+            return new SuccessResult(ResultConstant.RecordUpdated);
         }
     }
 }

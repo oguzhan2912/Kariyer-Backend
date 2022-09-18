@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Core.Utilities.Constant;
 using Core.Utilities.Result;
+using DataAccess.Abstract;
 using Entities.Concreate;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,41 +10,32 @@ namespace Business.Concreate
 {
     public class PostWorkService : IPostWorkService
     {
-        /*
-        private readonly IUnitOfWork _uow;
-
-        public PostWorkBusinessEngine(IUnitOfWork uow)
+        private IPostWorkDao _postWorkDao;
+        public PostWorkService(IPostWorkDao postWorkDao)
         {
-            _uow = uow;
-        }*/
-        public Result<List<PostWork>> GetItems()
+            _postWorkDao = postWorkDao;
+        }
+        public IResult Add(PostWork postWork)
         {
-            List<PostWork> postWorks = new List<PostWork>();
-            var data = postWorks;// _uow.postWorks.GetAll().ToList();
-            if (data != null)
-            {
-                foreach (var item in data)
-                {
-                    postWorks.Add(new PostWork()
-                    {
-                        Id = item.Id,
-                        CompanyName = item.CompanyName,
-                        CompanyPosition = item.CompanyPosition,
-                        CompanyDepartment = item.CompanyDepartment,
-                        CompanyMission = item.CompanyMission,
-                        CompanySalary = item.CompanySalary,
-                        CompanyStartingDate = item.CompanyStartingDate,
-                        CompanyStillWorking = item.CompanyStillWorking,
-                        CompanyLeavingDate = item.CompanyLeavingDate,
-                        CompanyLeavingReason = item.CompanyLeavingReason
-                        
-                    });
+            _postWorkDao.Add(postWork);
+            return new SuccessResult(ResultConstant.RecordCreated);
+        }
 
-                }
-                return new Result<List<PostWork>>(true, ResultConstant.RecordFound, postWorks);
+        public IResult Delete(PostWork postWork)
+        {
+            _postWorkDao.Delete(postWork);
+            return new SuccessResult(ResultConstant.RecordDeleted);
+        }
 
-            }
-            return new Result<List<PostWork>>(false, ResultConstant.RecordNotCreated, postWorks);
+        public IDataResult<List<PostWork>> GetList()
+        {
+            return new SuccessDataResult<List<PostWork>>(_postWorkDao.GetAll().ToList());
+        }
+
+        public IResult Update(PostWork postWork)
+        {
+            _postWorkDao.Update(postWork);
+            return new SuccessResult(ResultConstant.RecordUpdated);
         }
     }
 }

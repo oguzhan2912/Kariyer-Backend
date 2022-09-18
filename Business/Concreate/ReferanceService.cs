@@ -1,44 +1,42 @@
 ﻿using Business.Abstract;
 using Core.Utilities.Constant;
 using Core.Utilities.Result;
+using DataAccess.Abstract;
 using Entities.Concreate;
 using System.Collections.Generic;
-
+using System.Linq;
 
 namespace Business.Concreate
 {
     public class ReferanceService : IReferanceService
     {
-        /*
-        private readonly IUnitOfWork _uow;
-
-        public ReferanceBusinessEngine(IUnitOfWork uow)
+        private IReferanceDao _referanceDao;
+        public ReferanceService(IReferanceDao referanceDao)
         {
-            _uow = uow;
-        }*/
-        public Result<List<Referance>> GetItems()
+            _referanceDao = referanceDao;
+        }
+
+        public IResult Add(Referance referance)
         {
-            List<Referance> referances = new List<Referance>();
-            var data = referances;// _uow.referances.GetAll().ToList();
-            if (data != null)
-            {
-                foreach (var item in data)
-                {
-                    referances.Add(new Referance()
-                    {
-                        Id = item.Id,
-                        ReferanceName = item.ReferanceName,
-                        ReferanceFoundation = item.ReferanceFoundation,
-                        ReferanceEmail = item.ReferanceEmail,
-                        ReferancePhoneNumber = item.ReferancePhoneNumber,
-                        ReferancePhoneNumber2 = item.ReferancePhoneNumber2                    
-                    });
+            _referanceDao.Add(referance);
+            return new SuccessResult(ResultConstant.RecordCreated);
+        }
 
-                }
-                return new Result<List<Referance>>(true, ResultConstant.RecordFound, referances);
+        public IResult Delete(Referance referance)
+        {
+            _referanceDao.Delete(referance);
+            return new SuccessResult(ResultConstant.RecordDeleted);
+        }
 
-            }
-            return new Result<List<Referance>>(false, ResultConstant.RecordNotCreated, referances);
+        public IDataResult<List<Referance>> GetList()
+        {
+            return new SuccessDataResult<List<Referance>>(_referanceDao.GetAll().ToList());
+        }
+
+        public IResult Update(Referance referance)
+        {
+            _referanceDao.Update(referance);
+            return new SuccessResult(ResultConstant.RecordUpdated);
         }
     }
 }

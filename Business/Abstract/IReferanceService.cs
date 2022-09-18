@@ -5,6 +5,9 @@ namespace Business.Abstract
 {
    public interface IReferanceService
     {
-        Result<List<Referance>> GetItems();
+        IResult Add(Referance referance);
+        IResult Delete(Referance referance);
+        IResult Update(Referance referance);
+        IDataResult<List<Referance>> GetList();
     }
 }

@@ -5,7 +5,7 @@ using DataAccess.DataContext;
 
 namespace DataAccess.Concreate
 {
-    class EducationDegreeDao : EntityRepository<EducationDegree, PortalDbContext>, IEducationDegreeDao
+    public class EducationDegreeDao : EntityRepository<EducationDegree, PortalDbContext>, IEducationDegreeDao
     {
        
     }

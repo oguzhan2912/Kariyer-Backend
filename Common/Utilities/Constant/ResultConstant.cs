@@ -11,6 +11,9 @@ namespace Core.Utilities.Constant
 
         public const string RecordNotFound = "Kayıt Bulunamadı";
 
+        public const string RecordDeleted = "Kayıt Silindi";
+
+        public const string RecordUpdated = "Kayıt Güncellendi";
         
     }
 }

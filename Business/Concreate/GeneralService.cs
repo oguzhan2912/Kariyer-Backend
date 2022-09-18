@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Core.Utilities.Constant;
 using Core.Utilities.Result;
+using DataAccess.Abstract;
 using Entities.Concreate;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,45 +10,32 @@ namespace Business.Concreate
 {
     public class GeneralService : IGeneralService
     {
-        /*
-        private readonly IUnitOfWork _uow;
-
-        public GeneralBusinessEngine(IUnitOfWork uow)
+        private IGeneralDao _generalDao;
+        public GeneralService(IGeneralDao generalDao)
         {
-            _uow = uow;
+            _generalDao = generalDao;
         }
-        */
-        public Result<List<General>> GetItems()
+        public IResult Add(General general)
         {
-            List<General> generals = new List<General>();
-            var data = generals;// _uow.generals.GetAll().ToList();
-            if (data != null)
-            {
-                foreach (var item in data)
-                {
-                    generals.Add(new General()
-                    {
-                        Id = item.Id,
-                        Name = item.Name,
-                        LastName = item.LastName,
-                        Graduation = item.Graduation,
-                        Gender = item.Gender,
-                        IdentityType = item.IdentityType,
-                        IdentityNum = item.IdentityNum,
-                        DriverLicense = item.DriverLicense,
-                        DriverLicenseType = item.DriverLicenseType,
-                        MartialStatus = item.MartialStatus,
-                        Nation = item.Nation,
-                        DateOfBirth = item.DateOfBirth,
-                        BornedCity = item.BornedCity,
-                        BornedCountry = item.BornedCountry
-                    });
+            _generalDao.Add(general);
+            return new SuccessResult(ResultConstant.RecordCreated);
+        }
 
-                }
-                return new Result<List<General>>(true, ResultConstant.RecordFound, generals);
+        public IResult Delete(General general)
+        {
+            _generalDao.Delete(general);
+            return new SuccessResult(ResultConstant.RecordDeleted);
+        }
 
-            }
-            return new Result<List<General>>(false, ResultConstant.RecordNotCreated, generals);
+        public IDataResult<List<General>> GetList()
+        {
+            return new SuccessDataResult<List<General>>(_generalDao.GetAll().ToList());
+        }
+
+        public IResult Update(General general)
+        {
+            _generalDao.Update(general);
+            return new SuccessResult(ResultConstant.RecordUpdated);
         }
     }
 }

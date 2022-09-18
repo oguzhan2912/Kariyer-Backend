@@ -11,16 +11,34 @@ namespace deneme.Controllers
     public class ReferanceController : ControllerBase
     {
         private readonly IReferanceService _referanceBusiness;
+
         public ReferanceController(IReferanceService referanceBusiness)
         {
             _referanceBusiness = referanceBusiness;
         }
 
         [HttpGet("GetReferances")]
-        public List<Referance> GetItems()
+        public List<Referance> GetReferance()
         {
-            return _referanceBusiness.GetItems().Data;
+            return _referanceBusiness.GetList().Data;
         }
 
+        [HttpPost("SaveReferances")]
+        public bool SaveReferance([FromBody] Referance referance)
+        {
+            return _referanceBusiness.Add(referance).IsSuccess;
+        }
+
+        [HttpDelete("DeleteReferances")]
+        public bool DeleteReferance([FromBody] Referance referance)
+        {
+            return _referanceBusiness.Delete(referance).IsSuccess;
+        }
+
+        [HttpPut("UpdateReferances")]
+        public bool UpdateReferance([FromBody] Referance referance)
+        {
+            return _referanceBusiness.Update(referance).IsSuccess;
+        }
     }
 }

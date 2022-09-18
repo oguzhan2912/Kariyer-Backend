@@ -11,15 +11,34 @@ namespace deneme.Controllers
     public class PostWorkController : ControllerBase
     {
         private readonly IPostWorkService _postWorkBusiness;
+
         public PostWorkController(IPostWorkService postWorkBusiness)
         {
             _postWorkBusiness = postWorkBusiness;
         }
 
         [HttpGet("GetPostWorks")]
-        public List<PostWork> GetItems()
+        public List<PostWork> GetPostWork()
         {
-            return _postWorkBusiness.GetItems().Data;
+            return _postWorkBusiness.GetList().Data;
+        }
+
+        [HttpPost("SavePostWorks")]
+        public bool SavePostWork([FromBody] PostWork postWork)
+        {
+            return _postWorkBusiness.Add(postWork).IsSuccess;
+        }
+
+        [HttpDelete("DeletePostWorks")]
+        public bool DeletePostWork([FromBody] PostWork postWork)
+        {
+            return _postWorkBusiness.Delete(postWork).IsSuccess;
+        }
+
+        [HttpPut("UpdatePostWorks")]
+        public bool UpdatePostWork([FromBody] PostWork postWork)
+        {
+            return _postWorkBusiness.Update(postWork).IsSuccess;
         }
     }
 }

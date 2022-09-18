@@ -5,6 +5,9 @@ namespace Business.Abstract
 {
     public interface IGeneralService
     {
-        Result<List<General>> GetItems();
+        IResult Add(General general);
+        IResult Delete(General general);
+        IResult Update(General general);
+        IDataResult<List<General>> GetList();
     }
 }

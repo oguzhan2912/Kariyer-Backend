@@ -5,8 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-
-
 namespace Core.DataAccess
 {
     public class EntityRepository<TEntity, TContext> : IEntityRepository<TEntity>

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DataAccess.DataContext;
 using Entities.Concreate;
+using Business.Abstract;
 
 namespace PortalWebApi.Controllers
 {
@@ -14,95 +15,35 @@ namespace PortalWebApi.Controllers
     [ApiController]
     public class ContactsController : ControllerBase
     {
-        private readonly PortalDbContext _context;
+        private readonly IContactService _contactBusiness;
 
-        public ContactsController(PortalDbContext context)
+        public ContactsController(IContactService contactBusiness)
         {
-            _context = context;
+            _contactBusiness = contactBusiness;
         }
 
-        // GET: api/Contacts
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Contact>>> GetContacts()
+        [HttpGet("GetContacts")]
+        public List<Contact> GetContact()
         {
-            return await _context.Contacts.ToListAsync();
+            return _contactBusiness.GetList().Data;
         }
 
-        // GET: api/Contacts/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Contact>> GetContact(int id)
+        [HttpPost("SaveContacts")]
+        public bool SaveContact([FromBody] Contact contact)
         {
-            var contact = await _context.Contacts.FindAsync(id);
-
-            if (contact == null)
-            {
-                return NotFound();
-            }
-
-            return contact;
+            return _contactBusiness.Add(contact).IsSuccess;
         }
 
-        // PUT: api/Contacts/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutContact(int id, Contact contact)
+        [HttpDelete("DeleteContacts")]
+        public bool DeleteContact([FromBody] Contact contact)
         {
-            if (id != contact.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(contact).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ContactExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return _contactBusiness.Delete(contact).IsSuccess;
         }
 
-        // POST: api/Contacts
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Contact>> PostContact(Contact contact)
+        [HttpPut("UpdateContacts")]
+        public bool UpdateContact([FromBody] Contact contact)
         {
-            _context.Contacts.Add(contact);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetContact", new { id = contact.Id }, contact);
-        }
-
-        // DELETE: api/Contacts/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteContact(int id)
-        {
-            var contact = await _context.Contacts.FindAsync(id);
-            if (contact == null)
-            {
-                return NotFound();
-            }
-
-            _context.Contacts.Remove(contact);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool ContactExists(int id)
-        {
-            return _context.Contacts.Any(e => e.Id == id);
+            return _contactBusiness.Update(contact).IsSuccess;
         }
     }
 }

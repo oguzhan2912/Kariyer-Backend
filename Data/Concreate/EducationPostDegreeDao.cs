@@ -6,7 +6,7 @@ using Entities.Concreate;
 
 namespace DataAccess.Concreate
 {
-    class EducationPostDegreeDao : EntityRepository<EducationPostDegree, PortalDbContext>, IEducationPostDegreeDao
+    public class EducationPostDegreeDao : EntityRepository<EducationPostDegree, PortalDbContext>, IEducationPostDegreeDao
     {
         
     }

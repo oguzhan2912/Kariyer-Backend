@@ -15,21 +15,31 @@ namespace deneme.Controllers
       
         public LanguageController(ILanguageService languageBusiness)
         {
-            _languageBusiness = languageBusiness;
-           
-        }
-        [HttpGet("GetLanguages")]
-        public List<Language> GetItems()
-        {
-            return _languageBusiness.GetItems().Data;
+            _languageBusiness = languageBusiness;           
         }
 
-        /*
+        [HttpGet("GetLanguages")]
+        public List<Language> GetLanguage()
+        {
+            return _languageBusiness.GetList().Data;
+        }
+        
         [HttpPost("SaveLanguages")]
         public bool SaveLanguage([FromBody]Language language)
         {
-            return _languageBusiness.SaveLanguage(language).IsSuccess;
-        }*/
-               
+            return _languageBusiness.Add(language).IsSuccess;
+        }
+
+        [HttpDelete("DeleteLanguages")]
+        public bool DeleteLanguage([FromBody] Language language)
+        {
+            return _languageBusiness.Delete(language).IsSuccess;
+        }
+
+        [HttpPut("UpdateLanguages")]
+        public bool UpdateLanguage([FromBody] Language language)
+        {
+            return _languageBusiness.Update(language).IsSuccess;
+        }
     }
 }

@@ -24,7 +24,7 @@ namespace deneme.Controllers
         {
             return Ok();
         }
-
+        /*
         [HttpPost]
         [Route("Register")]
         public async Task<Object> PostApplicationUser(ApplicationUser model)
@@ -32,7 +32,7 @@ namespace deneme.Controllers
             var data = _applicationUserEngine.CreateApplicationUser(model);
             var result = data.Result.Data;
             return Ok(result);
-        }
+        }*/
  
 
 

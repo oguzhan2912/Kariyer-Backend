@@ -6,6 +6,6 @@ namespace Business.Abstract
 {
     public interface IApplicationUserService
     {
-        Task<Result <object>> CreateApplicationUser(ApplicationUser model);
+       
     }
 }

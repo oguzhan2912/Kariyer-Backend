@@ -11,15 +11,36 @@ namespace deneme.Controllers
     public class SkillController : ControllerBase
     {
         private readonly ISkillService _skillBusiness;
+
         public SkillController(ISkillService skillBusiness)
         {
             _skillBusiness = skillBusiness;
         }
 
         [HttpGet("GetSkills")]
-        public List<Skill> GetItems()
+        public List<Skill> GetSkill()
         {
-            return _skillBusiness.GetItems().Data;
+            return _skillBusiness.GetList().Data;
         }
+
+        [HttpPost("SaveSkills")]
+        public bool SaveSkill([FromBody] Skill skill)
+        {
+            return _skillBusiness.Add(skill).IsSuccess;
+        }
+
+        [HttpDelete("DeleteSkills")]
+        public bool DeleteSkill([FromBody] Skill skill)
+        {
+            return _skillBusiness.Delete(skill).IsSuccess;
+        }
+
+        [HttpPut("UpdateSkills")]
+        public bool UpdateSkill([FromBody] Skill skill)
+        {
+            return _skillBusiness.Update(skill).IsSuccess;
+        }
+
+
     }
 }

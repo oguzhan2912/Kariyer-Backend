@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Business.Concreate
 {
-    public class ApplicationUserService:IApplicationUserService
+    public class ApplicationUserService
     {
         private UserManager<ApplicationUser> _userManager;
         private SignInManager<ApplicationUser> _signInManager;
@@ -46,10 +46,7 @@ namespace Business.Concreate
             }
         }
         */
-        Task<Result<object>> IApplicationUserService.CreateApplicationUser(ApplicationUser model)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 
 }
