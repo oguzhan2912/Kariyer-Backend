@@ -28,17 +28,7 @@ namespace Entities.Concreate
         public decimal AssociateGPA { get; set; }
         public string AssociateNewSchool { get; set; }
         public string AssociateNewDepartment { get; set; }
-        
-        /*Postgraduation*/
-        public string PostgraduationName { get; set; }
-        public DateTime PostgraduationGraduationDate { get; set; }
-        public string PostgraduationDepartment { get; set; }
-        public string PostgraduationCountry { get; set; }
-        public string PostgraduationState { get; set; }
-        public decimal PostgraduationGPA { get; set; }
-        public string PostgraduationNewSchool { get; set; }
-        public string PostgraduationNewDepartment { get; set; }
-
+                
         /*PhD*/
 
         public string PhDName { get; set; }

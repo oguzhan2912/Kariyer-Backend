@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 namespace deneme.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Educations")]
     [ApiController]
     public class EducationController : ControllerBase
     {

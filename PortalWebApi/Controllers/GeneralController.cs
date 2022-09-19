@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace deneme.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Generals")]
     [ApiController]
     public class GeneralController : ControllerBase
     {

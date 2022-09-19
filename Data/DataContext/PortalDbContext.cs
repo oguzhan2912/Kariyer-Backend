@@ -3,12 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.DataContext
 {
-    public class PortalDbContext:DbContext
+    public  class PortalDbContext:DbContext
     {
-        public PortalDbContext() : base()
-        {
-            
-        }
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
         {
             optionsBuilder.UseSqlServer
