@@ -58,5 +58,15 @@ namespace Core.DataAccess
                 context.SaveChanges();
             }
         }
+
+        public void UpdateDelete(TEntity entity)
+        {
+            using (var context = new TContext())
+            {
+                var update = context.Entry(entity);
+                update.State = EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
     }
 }

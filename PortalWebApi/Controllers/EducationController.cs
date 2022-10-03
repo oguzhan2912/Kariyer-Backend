@@ -21,6 +21,12 @@ namespace deneme.Controllers
             return _educationBusiness.GetList().Data;
         }
 
+        [HttpGet("GetEducationsGradeLevel")]
+        public List<Education> GetGradeLevel(int gradeLevel)
+        {
+            return _educationBusiness.GetByGradeLevel(gradeLevel).Data;
+        }
+
         [HttpPost("SaveEducations")]
         public bool SaveEducation([FromBody] Education education)
         {

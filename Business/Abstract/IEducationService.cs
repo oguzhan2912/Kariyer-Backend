@@ -10,5 +10,6 @@ namespace Business.Abstract
         IResult Delete(Education education);
         IResult Update(Education education);
         IDataResult<List<Education>> GetList();
+        IDataResult<List<Education>> GetByGradeLevel(int gradeLevel);
     }
 }

@@ -10,7 +10,7 @@ namespace Entities.Concreate
     {
 
         /*Degree*/
-        
+        /*
         public string DegreeName { get; set; }
         public DateTime DegreeGraduationDate { get; set; }
         public string DegreeDepartment { get; set; }
@@ -19,10 +19,10 @@ namespace Entities.Concreate
         public decimal DegreeGPA { get; set; }
         public string DegreeNewSchool { get; set; }
         public string DegreeNewDepartment { get; set; }
-        
-        /*Connections*/
+        */
+        /*Connections*//*
         public int? EducationId { get; set; }
         public virtual Education Education { get; set; }
-        
+        */
     }
 }

@@ -4,14 +4,16 @@ using DataAccess.DataContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(PortalDbContext))]
-    partial class PortalDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220923120813_v2")]
+    partial class v2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -77,6 +79,9 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("District")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("General")
                         .HasColumnType("nvarchar(max)");
 
@@ -104,9 +109,6 @@ namespace DataAccess.Migrations
                     b.Property<string>("SalaryExp")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("State")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("WorkPhone")
                         .HasColumnType("int");
 
@@ -124,6 +126,30 @@ namespace DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("AssociateCountry")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AssociateDepartment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("AssociateGPA")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("AssociateGraduationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("AssociateName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AssociateNewDepartment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AssociateNewSchool")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AssociateState")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("CVId")
                         .HasColumnType("int");
 
@@ -133,14 +159,11 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("EducationState")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("GradeLevel")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("GraduationDate")
+                    b.Property<DateTime>("HighGraduationDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("HighSchoolName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("IsDeleted")
                         .HasColumnType("int");
@@ -151,20 +174,41 @@ namespace DataAccess.Migrations
                     b.Property<string>("ModifiedUser")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("NewDepartment")
+                    b.Property<string>("PhDCountry")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("NewSchool")
+                    b.Property<string>("PhDDepartment")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SchoolDepartment")
+                    b.Property<decimal>("PhDGPA")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("PhDGraduationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PhDName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("SchoolGPA")
-                        .HasColumnType("real");
-
-                    b.Property<string>("SchoolName")
+                    b.Property<string>("PhDNewDepartment")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhDNewSchool")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhDState")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("PrimaryGraduationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PrimarySchoolName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SecondarySchoolName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("SeondaryGraduationDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -186,6 +230,33 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("DegreeCountry")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DegreeDepartment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("DegreeGPA")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("DegreeGraduationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DegreeName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DegreeNewDepartment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DegreeNewSchool")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DegreeState")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("EducationId")
+                        .HasColumnType("int");
+
                     b.Property<int>("IsDeleted")
                         .HasColumnType("int");
 
@@ -196,6 +267,8 @@ namespace DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EducationId");
 
                     b.ToTable("EducationDegrees");
                 });
@@ -213,6 +286,9 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("EducationId")
+                        .HasColumnType("int");
+
                     b.Property<int>("IsDeleted")
                         .HasColumnType("int");
 
@@ -222,7 +298,33 @@ namespace DataAccess.Migrations
                     b.Property<string>("ModifiedUser")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PostgraduationCountry")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostgraduationDepartment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("PostgraduationGPA")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("PostgraduationGraduationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PostgraduationName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostgraduationNewDepartment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostgraduationNewSchool")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostgraduationState")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("EducationId");
 
                     b.ToTable("EducationPostDegrees");
                 });
@@ -251,6 +353,9 @@ namespace DataAccess.Migrations
 
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("DriverLicense")
+                        .HasColumnType("bit");
 
                     b.Property<string>("DriverLicenseType")
                         .HasColumnType("nvarchar(max)");
@@ -532,8 +637,8 @@ namespace DataAccess.Migrations
                     b.Property<string>("ModifiedUser")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SkillName")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("SkillName")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -558,6 +663,24 @@ namespace DataAccess.Migrations
                         .HasForeignKey("CVId");
 
                     b.Navigation("CVInfo");
+                });
+
+            modelBuilder.Entity("Entities.Concreate.EducationDegree", b =>
+                {
+                    b.HasOne("Entities.Concreate.Education", "Education")
+                        .WithMany("EducationDegreeInfos")
+                        .HasForeignKey("EducationId");
+
+                    b.Navigation("Education");
+                });
+
+            modelBuilder.Entity("Entities.Concreate.EducationPostDegree", b =>
+                {
+                    b.HasOne("Entities.Concreate.Education", "Education")
+                        .WithMany("EducationPostDegreeInfos")
+                        .HasForeignKey("EducationId");
+
+                    b.Navigation("Education");
                 });
 
             modelBuilder.Entity("Entities.Concreate.General", b =>
@@ -631,6 +754,13 @@ namespace DataAccess.Migrations
                     b.Navigation("ReferanceInfos");
 
                     b.Navigation("SkillInfos");
+                });
+
+            modelBuilder.Entity("Entities.Concreate.Education", b =>
+                {
+                    b.Navigation("EducationDegreeInfos");
+
+                    b.Navigation("EducationPostDegreeInfos");
                 });
 #pragma warning restore 612, 618
         }

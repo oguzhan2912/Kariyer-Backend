@@ -36,8 +36,9 @@ namespace deneme
             services.AddDbContext<PortalDbContext>(
             options => options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));*/
             
-            services.AddDbContext<PortalDbContext>(
-            options => options.UseSqlServer("name=ConnectionStrings:IdentityConnection"));
+           //services.AddDbContext<PortalDbContext>(
+           // options => options.UseSqlServer("name=ConnectionStrings:IdentityConnection"));
+            services.AddSwaggerGen();
 
         }
 
@@ -50,7 +51,11 @@ namespace deneme
                  .SetIsOriginAllowed((host) => true)
                  .AllowCredentials()
              );
+            app.UseSwagger();
+            app.UseSwaggerUI(c => {
 
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "PortalWebApi v1");
+            });
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

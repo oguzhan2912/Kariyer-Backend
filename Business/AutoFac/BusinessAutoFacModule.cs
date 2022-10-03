@@ -11,7 +11,7 @@ namespace Business.AutoFac
         protected override void Load(ContainerBuilder builder)
         {        
           
-            builder.RegisterType<ApplicationUserService>().As<IApplicationUserService>();
+           // builder.RegisterType<ApplicationUserService>().As<IApplicationUserService>();
             builder.RegisterType<ContactService>().As<IContactService>();
             builder.RegisterType<EducationDegreeService>().As<IEducationDegreeService>();
             builder.RegisterType<EducationPostDegreeService>().As<IEducationPostDegreeService>();

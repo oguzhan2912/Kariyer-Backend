@@ -9,7 +9,7 @@ namespace Entities.Concreate
    public class Skill : BaseCard
     {
        
-        public int SkillName { get; set; }
+        public string SkillName { get; set; }
 
         /*Connections*/
         public int? CVId { get; set; }

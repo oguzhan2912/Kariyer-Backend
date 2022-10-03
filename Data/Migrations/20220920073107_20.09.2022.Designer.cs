@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(PortalDbContext))]
-    [Migration("20220915120011_kurumsalv1")]
-    partial class kurumsalv1
+    [Migration("20220920073107_20.09.2022")]
+    partial class _20092022
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,24 +21,6 @@ namespace DataAccess.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Entities.Concreate.ApplicationUser", b =>
-                {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Lastname")
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(150)");
-
-                    b.HasKey("UserId");
-
-                    b.ToTable("ApplicationUser");
-                });
-
             modelBuilder.Entity("Entities.Concreate.CV", b =>
                 {
                     b.Property<int>("Id")
@@ -46,24 +28,7 @@ namespace DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CreatedUser")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ModifiedUser")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("CVs");
                 });
@@ -210,30 +175,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhDState")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PostgraduationCountry")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PostgraduationDepartment")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("PostgraduationGPA")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<DateTime>("PostgraduationGraduationDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("PostgraduationName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PostgraduationNewDepartment")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PostgraduationNewSchool")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PostgraduationState")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("PrimaryGraduationDate")
@@ -436,7 +377,7 @@ namespace DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CVId")
+                    b.Property<int?>("CVId")
                         .HasColumnType("int");
 
                     b.Property<string>("CreatedUser")
@@ -661,15 +602,6 @@ namespace DataAccess.Migrations
                     b.ToTable("Skills");
                 });
 
-            modelBuilder.Entity("Entities.Concreate.CV", b =>
-                {
-                    b.HasOne("Entities.Concreate.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Entities.Concreate.Contact", b =>
                 {
                     b.HasOne("Entities.Concreate.CV", "CVInfo")
@@ -719,9 +651,7 @@ namespace DataAccess.Migrations
                 {
                     b.HasOne("Entities.Concreate.CV", "CVInfo")
                         .WithMany("LanguageInfos")
-                        .HasForeignKey("CVId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CVId");
 
                     b.Navigation("CVInfo");
                 });

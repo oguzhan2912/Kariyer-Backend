@@ -18,10 +18,7 @@ namespace Entities.Concreate
         public virtual ICollection<Referance> ReferanceInfos { get; set; }
         public virtual ICollection<Skill> SkillInfos { get; set; }
         public virtual ICollection<PostWork> PostWorkInfos { get; set; }
-        public virtual ICollection<Other> OtherInfos { get; set; }
-
-        public int? UserId { get; set; }
-        public virtual ApplicationUser User { get; set; }
+        public virtual ICollection<Other> OtherInfos { get; set; }      
         
         
 

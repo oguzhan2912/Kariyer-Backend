@@ -10,6 +10,7 @@ namespace Business.Abstract
         IResult Add(Language language);
         IResult Delete(Language language);
         IResult Update(Language language);
+        IResult UpdateDelete(Language language);
         IDataResult<List<Language>> GetList();
         IDataResult<Language> GetById(int languageId);
         IDataResult<List<Language>> GetByExamList(string exam);

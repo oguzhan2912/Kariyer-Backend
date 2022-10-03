@@ -47,5 +47,11 @@ namespace Business.Concreate
             _languageDao.Update(language);
             return new SuccessResult(ResultConstant.RecordUpdated);
         }
+
+        public IResult UpdateDelete(Language language)
+        {
+            _languageDao.Update(language);
+            return new SuccessResult(ResultConstant.RecordUpdated);
+        }
     }
 }

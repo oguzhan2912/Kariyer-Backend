@@ -1,6 +1,7 @@
 ﻿using Entities.Concreate;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace DataAccess.DataContext
 {
     public  class PortalDbContext:DbContext

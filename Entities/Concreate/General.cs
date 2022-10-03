@@ -13,9 +13,8 @@ namespace Entities.Concreate
         public string LastName { get; set; }
         public string Graduation { get; set; }
         public string Gender { get; set; }
-        public string  IdentityType { get; set; }
-        public int IdentityNum { get; set; }
-        public bool DriverLicense { get; set; }
+        public string IdentityType { get; set; }
+        public int IdentityNum { get; set; }        
         public string DriverLicenseType { get; set; }
         public string MartialStatus { get; set; }
         public string Nation { get; set; }        

@@ -34,10 +34,16 @@ namespace Business.Concreate
             return new SuccessDataResult<List<Education>>(_educationDao.GetAll().ToList());
         }
 
+        public IDataResult<List<Education>> GetByGradeLevel(int gradeLevel)
+        {
+            return new SuccessDataResult<List<Education>>(_educationDao.GetAll(w => w.GradeLevel == gradeLevel).ToList());//o propertye ait bütün değerleri döndürme
+        }
+
         public IResult Update(Education education)
         {
             _educationDao.Update(education);
             return new SuccessResult(ResultConstant.RecordUpdated);
         }
+
     }
 }
