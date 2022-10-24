@@ -30,14 +30,7 @@ namespace deneme
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-            services.AddControllers();                                    
-            
-            /*
-            services.AddDbContext<PortalDbContext>(
-            options => options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));*/
-            
-           //services.AddDbContext<PortalDbContext>(
-           // options => options.UseSqlServer("name=ConnectionStrings:IdentityConnection"));
+            services.AddControllers();                                 
             services.AddSwaggerGen();
 
         }

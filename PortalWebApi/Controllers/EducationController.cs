@@ -33,7 +33,7 @@ namespace deneme.Controllers
             return _educationBusiness.Add(education).IsSuccess;
         }
 
-        [HttpDelete("DeleteEducations")]
+        [HttpPost("DeleteEducations")]
         public bool DeleteEducation([FromBody] Education education)
         {
             return _educationBusiness.Delete(education).IsSuccess;

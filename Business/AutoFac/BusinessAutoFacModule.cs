@@ -3,6 +3,8 @@ using Business.Concreate;
 using Business.Abstract;
 using DataAccess.Concreate;
 using DataAccess.Abstract;
+using DataAccess.Concreate.UserLogin;
+using DataAccess.Abstract.UserLogin;
 
 namespace Business.AutoFac
 {
@@ -35,6 +37,7 @@ namespace Business.AutoFac
             builder.RegisterType<PostWorkDao>().As<IPostWorkDao>();
             builder.RegisterType<ReferanceDao>().As<IReferanceDao>();
             builder.RegisterType<SkillDao>().As<ISkillDao>();
+            
         }
     }
 }

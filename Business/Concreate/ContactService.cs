@@ -24,13 +24,14 @@ namespace Business.Concreate
 
         public IResult Delete(Contact contact)
         {
-           _contactDao.Delete(contact);
+            contact.IsDeleted = 1;
+           _contactDao.Update(contact);
             return new SuccessResult(ResultConstant.RecordDeleted);
         }
 
         public IDataResult<List<Contact>> GetList()
         {
-            return new SuccessDataResult<List<Contact>>(_contactDao.GetAll().ToList());//bütün listeyi döndürme
+            return new SuccessDataResult<List<Contact>>(_contactDao.GetAll(w=> w.IsDeleted == 0).ToList());//bütün listeyi döndürme
         }
 
         public IResult Update(Contact contact)

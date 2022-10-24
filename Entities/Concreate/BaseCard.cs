@@ -15,7 +15,7 @@ namespace Entities.Concreate
         public DateTime ModifiedDate { get; set; } 
         public string CreatedUser { get; set; }
         public string ModifiedUser { get; set; }
-        public int IsDeleted { get; set; } = 1;
+        public int IsDeleted { get; set; } = 0;
         
 
     }

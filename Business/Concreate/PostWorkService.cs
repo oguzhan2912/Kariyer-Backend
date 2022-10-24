@@ -23,13 +23,14 @@ namespace Business.Concreate
 
         public IResult Delete(PostWork postWork)
         {
-            _postWorkDao.Delete(postWork);
+            postWork.IsDeleted = 1;
+            _postWorkDao.Update(postWork);
             return new SuccessResult(ResultConstant.RecordDeleted);
         }
 
         public IDataResult<List<PostWork>> GetList()
         {
-            return new SuccessDataResult<List<PostWork>>(_postWorkDao.GetAll().ToList());
+            return new SuccessDataResult<List<PostWork>>(_postWorkDao.GetAll(w => w.IsDeleted == 0).ToList());
         }
 
         public IResult Update(PostWork postWork)

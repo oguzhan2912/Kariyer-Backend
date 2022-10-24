@@ -25,7 +25,8 @@ namespace Business.Concreate
 
         public IResult Delete(Education education)
         {
-            _educationDao.Delete(education);
+            education.IsDeleted = 1;
+            _educationDao.Update(education);
             return new SuccessResult(ResultConstant.RecordDeleted);
         }
 
@@ -36,8 +37,9 @@ namespace Business.Concreate
 
         public IDataResult<List<Education>> GetByGradeLevel(int gradeLevel)
         {
-            return new SuccessDataResult<List<Education>>(_educationDao.GetAll(w => w.GradeLevel == gradeLevel).ToList());//o propertye ait bütün değerleri döndürme
-        }
+            return new SuccessDataResult<List<Education>>
+                (_educationDao.GetAll(w => w.GradeLevel == gradeLevel && w.IsDeleted == 0).ToList());//o propertye ait bütün değerleri döndürme
+        }      
 
         public IResult Update(Education education)
         {

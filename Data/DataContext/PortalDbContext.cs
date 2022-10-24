@@ -1,4 +1,6 @@
 ﻿using Entities.Concreate;
+using Entities.Concreate.UserLogin;
+
 using Microsoft.EntityFrameworkCore;
 
 
@@ -10,10 +12,11 @@ namespace DataAccess.DataContext
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
         {
             optionsBuilder.UseSqlServer
-                (@"Server=STJ999;Database=PortalData;Trusted_Connection=true;MultipleActiveResultSets=true");
+                (@"Server=STJ999;Database=PortalData;
+                Trusted_Connection=true;MultipleActiveResultSets=true");
         }
+                
 
-        //public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<CV> CVs { get; set; }
         public DbSet<General> Generals{ get; set; }
         public DbSet<Contact> Contacts { get; set; }
@@ -25,6 +28,8 @@ namespace DataAccess.DataContext
         public DbSet<Other> Others { get; set; }
         public DbSet<EducationDegree> EducationDegrees { get; set; }
         public DbSet<EducationPostDegree> EducationPostDegrees { get; set; }
-        
+        public DbSet<User> Users { get; set; }
+
+
     }
 }

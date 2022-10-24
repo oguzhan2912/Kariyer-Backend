@@ -29,7 +29,7 @@ namespace deneme.Controllers
             return _postWorkBusiness.Add(postWork).IsSuccess;
         }
 
-        [HttpDelete("DeletePostWorks")]
+        [HttpPost("DeletePostWorks")]
         public bool DeletePostWork([FromBody] PostWork postWork)
         {
             return _postWorkBusiness.Delete(postWork).IsSuccess;

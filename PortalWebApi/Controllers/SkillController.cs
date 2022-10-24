@@ -29,7 +29,7 @@ namespace deneme.Controllers
             return _skillBusiness.Add(skill).IsSuccess;
         }
 
-        [HttpDelete("DeleteSkills")]
+        [HttpPost("DeleteSkills")]
         public bool DeleteSkill([FromBody] Skill skill)
         {
             return _skillBusiness.Delete(skill).IsSuccess;

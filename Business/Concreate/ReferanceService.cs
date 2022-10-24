@@ -24,13 +24,14 @@ namespace Business.Concreate
 
         public IResult Delete(Referance referance)
         {
-            _referanceDao.Delete(referance);
+            referance.IsDeleted = 1;
+            _referanceDao.Update(referance);
             return new SuccessResult(ResultConstant.RecordDeleted);
         }
 
         public IDataResult<List<Referance>> GetList()
         {
-            return new SuccessDataResult<List<Referance>>(_referanceDao.GetAll().ToList());
+            return new SuccessDataResult<List<Referance>>(_referanceDao.GetAll(w => w.IsDeleted == 0).ToList());
         }
 
         public IResult Update(Referance referance)

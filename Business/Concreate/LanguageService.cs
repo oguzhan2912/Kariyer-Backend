@@ -22,8 +22,9 @@ namespace Business.Concreate
         }
 
         public IResult Delete(Language language)
-        {            
-            _languageDao.Delete(language);
+        {
+            language.IsDeleted = 1;
+            _languageDao.Update(language);
             return new SuccessResult(ResultConstant.RecordDeleted);
         }
 
@@ -39,7 +40,7 @@ namespace Business.Concreate
 
         public IDataResult<List<Language>> GetList()
         {
-            return new SuccessDataResult<List<Language>>(_languageDao.GetAll().ToList());//bütün listeyi döndürme
+            return new SuccessDataResult<List<Language>>(_languageDao.GetAll(w => w.IsDeleted == 0).ToList());//bütün listeyi döndürme
         }
 
         public IResult Update(Language language)
@@ -55,3 +56,4 @@ namespace Business.Concreate
         }
     }
 }
+

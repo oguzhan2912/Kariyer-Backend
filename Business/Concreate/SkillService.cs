@@ -24,13 +24,14 @@ namespace Business.Concreate
 
         public IResult Delete(Skill skill)
         {
-            _skillDao.Delete(skill);
+            skill.IsDeleted = 1;
+            _skillDao.Update(skill);
             return new SuccessResult(ResultConstant.RecordDeleted);
         }
 
         public IDataResult<List<Skill>> GetList()
         {
-            return new SuccessDataResult<List<Skill>>(_skillDao.GetAll().ToList());
+            return new SuccessDataResult<List<Skill>>(_skillDao.GetAll(w => w.IsDeleted == 0).ToList());
         }
 
         public IResult Update(Skill skill)

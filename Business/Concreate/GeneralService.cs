@@ -29,7 +29,7 @@ namespace Business.Concreate
 
         public IDataResult<List<General>> GetList()
         {
-            return new SuccessDataResult<List<General>>(_generalDao.GetAll().ToList());
+            return new SuccessDataResult<List<General>>(_generalDao.GetAll(w => w.IsDeleted == 0).ToList());
         }
 
         public IResult Update(General general)

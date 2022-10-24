@@ -29,7 +29,7 @@ namespace deneme.Controllers
             return _referanceBusiness.Add(referance).IsSuccess;
         }
 
-        [HttpDelete("DeleteReferances")]
+        [HttpPost("DeleteReferances")]
         public bool DeleteReferance([FromBody] Referance referance)
         {
             return _referanceBusiness.Delete(referance).IsSuccess;

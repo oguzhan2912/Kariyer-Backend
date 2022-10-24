@@ -33,13 +33,7 @@ namespace deneme.Controllers
         public bool SaveLanguage([FromBody] Language language)
         {
             return _languageBusiness.Add(language).IsSuccess;
-        }
-        /*
-        [HttpDelete("DeleteLanguages")]
-        public bool DeleteLanguage([FromBody] Language language)
-        {
-            return _languageBusiness.Delete(language).IsSuccess;
-        }*/
+        }        
 
         [HttpPut("UpdateLanguages")]
         public bool UpdateLanguage([FromBody] Language language)
@@ -47,10 +41,10 @@ namespace deneme.Controllers
             return _languageBusiness.Update(language).IsSuccess;
         }
 
-        [HttpPost("DeleteLanguages" +"{Id}")]
+        [HttpPost("DeleteLanguages")]
         public bool DeleteLanguage([FromBody] Language language)
         {
-            return _languageBusiness.UpdateDelete(language).IsSuccess;
+            return _languageBusiness.Delete(language).IsSuccess;
         }
     }
 }
