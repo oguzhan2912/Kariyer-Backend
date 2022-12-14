@@ -12,8 +12,8 @@ namespace DataAccess.DataContext
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
         {
             optionsBuilder.UseSqlServer
-                (@"Server=(LocalDB)\MSSQLLocalDB;Database=PORTALDB;
-                Trusted_Connection=true;MultipleActiveResultSets=true;User Id=oyanik; Password=Oguzhan2912");
+                (@"Server=10.5.1.17;Database=PORTALDB;
+                MultipleActiveResultSets=true;User Id=oyanik; Password=Oguzhan2912");
         }                
 
         
