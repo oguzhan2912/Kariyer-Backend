@@ -19,33 +19,6 @@ namespace DataAccess.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Entities.Concreate.CV", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CreatedUser")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("IsDeleted")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ModifiedUser")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("CVs");
-                });
-
             modelBuilder.Entity("Entities.Concreate.Contact", b =>
                 {
                     b.Property<int>("Id")
@@ -55,9 +28,6 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("CVId")
-                        .HasColumnType("int");
 
                     b.Property<int>("CellPhone")
                         .HasColumnType("int");
@@ -112,8 +82,6 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CVId");
-
                     b.ToTable("Contacts");
                 });
 
@@ -123,9 +91,6 @@ namespace DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CVId")
-                        .HasColumnType("int");
 
                     b.Property<string>("CreatedUser")
                         .HasColumnType("nvarchar(max)");
@@ -168,63 +133,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CVId");
-
                     b.ToTable("Educations");
-                });
-
-            modelBuilder.Entity("Entities.Concreate.EducationDegree", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CreatedUser")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("IsDeleted")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ModifiedUser")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("EducationDegrees");
-                });
-
-            modelBuilder.Entity("Entities.Concreate.EducationPostDegree", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CreatedUser")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("IsDeleted")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ModifiedUser")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("EducationPostDegrees");
                 });
 
             modelBuilder.Entity("Entities.Concreate.General", b =>
@@ -239,9 +148,6 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("BornedCountry")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("CVId")
-                        .HasColumnType("int");
 
                     b.Property<string>("CreatedUser")
                         .HasColumnType("nvarchar(max)");
@@ -290,8 +196,6 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CVId");
-
                     b.ToTable("Generals");
                 });
 
@@ -301,9 +205,6 @@ namespace DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CVId")
-                        .HasColumnType("int");
 
                     b.Property<string>("CreatedUser")
                         .HasColumnType("nvarchar(max)");
@@ -343,8 +244,6 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CVId");
-
                     b.ToTable("Languages");
                 });
 
@@ -354,9 +253,6 @@ namespace DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CVId")
-                        .HasColumnType("int");
 
                     b.Property<bool>("Cigaratte")
                         .HasColumnType("bit");
@@ -396,8 +292,6 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CVId");
-
                     b.ToTable("Others");
                 });
 
@@ -407,9 +301,6 @@ namespace DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CVId")
-                        .HasColumnType("int");
 
                     b.Property<string>("CompanyDepartment")
                         .HasColumnType("nvarchar(max)");
@@ -455,8 +346,6 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CVId");
-
                     b.ToTable("PostWorks");
                 });
 
@@ -466,9 +355,6 @@ namespace DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CVId")
-                        .HasColumnType("int");
 
                     b.Property<string>("CreatedUser")
                         .HasColumnType("nvarchar(max)");
@@ -502,8 +388,6 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CVId");
-
                     b.ToTable("Referances");
                 });
 
@@ -513,9 +397,6 @@ namespace DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CVId")
-                        .HasColumnType("int");
 
                     b.Property<string>("CreatedUser")
                         .HasColumnType("nvarchar(max)");
@@ -537,100 +418,49 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CVId");
-
                     b.ToTable("Skills");
                 });
 
-            modelBuilder.Entity("Entities.Concreate.Contact", b =>
+            modelBuilder.Entity("Entities.Concreate.UserLogin.User", b =>
                 {
-                    b.HasOne("Entities.Concreate.CV", "CVInfo")
-                        .WithMany("ContactInfos")
-                        .HasForeignKey("CVId");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Navigation("CVInfo");
-                });
+                    b.Property<string>("CreatedUser")
+                        .HasColumnType("nvarchar(max)");
 
-            modelBuilder.Entity("Entities.Concreate.Education", b =>
-                {
-                    b.HasOne("Entities.Concreate.CV", "CVInfo")
-                        .WithMany("EducationInfos")
-                        .HasForeignKey("CVId");
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
 
-                    b.Navigation("CVInfo");
-                });
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
 
-            modelBuilder.Entity("Entities.Concreate.General", b =>
-                {
-                    b.HasOne("Entities.Concreate.CV", "CVInfo")
-                        .WithMany("GeneralInfos")
-                        .HasForeignKey("CVId");
+                    b.Property<int>("IsDeleted")
+                        .HasColumnType("int");
 
-                    b.Navigation("CVInfo");
-                });
+                    b.Property<string>("Lastname")
+                        .HasColumnType("nvarchar(max)");
 
-            modelBuilder.Entity("Entities.Concreate.Language", b =>
-                {
-                    b.HasOne("Entities.Concreate.CV", "CVInfo")
-                        .WithMany("LanguageInfos")
-                        .HasForeignKey("CVId");
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
 
-                    b.Navigation("CVInfo");
-                });
+                    b.Property<string>("ModifiedUser")
+                        .HasColumnType("nvarchar(max)");
 
-            modelBuilder.Entity("Entities.Concreate.Other", b =>
-                {
-                    b.HasOne("Entities.Concreate.CV", "CVInfo")
-                        .WithMany("OtherInfos")
-                        .HasForeignKey("CVId");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Navigation("CVInfo");
-                });
+                    b.Property<byte[]>("PasswordHash")
+                        .HasColumnType("varbinary(max)");
 
-            modelBuilder.Entity("Entities.Concreate.PostWork", b =>
-                {
-                    b.HasOne("Entities.Concreate.CV", "CVInfo")
-                        .WithMany("PostWorkInfos")
-                        .HasForeignKey("CVId");
+                    b.Property<byte[]>("PasswordSalt")
+                        .HasColumnType("varbinary(max)");
 
-                    b.Navigation("CVInfo");
-                });
+                    b.HasKey("Id");
 
-            modelBuilder.Entity("Entities.Concreate.Referance", b =>
-                {
-                    b.HasOne("Entities.Concreate.CV", "CVInfo")
-                        .WithMany("ReferanceInfos")
-                        .HasForeignKey("CVId");
-
-                    b.Navigation("CVInfo");
-                });
-
-            modelBuilder.Entity("Entities.Concreate.Skill", b =>
-                {
-                    b.HasOne("Entities.Concreate.CV", "CVInfo")
-                        .WithMany("SkillInfos")
-                        .HasForeignKey("CVId");
-
-                    b.Navigation("CVInfo");
-                });
-
-            modelBuilder.Entity("Entities.Concreate.CV", b =>
-                {
-                    b.Navigation("ContactInfos");
-
-                    b.Navigation("EducationInfos");
-
-                    b.Navigation("GeneralInfos");
-
-                    b.Navigation("LanguageInfos");
-
-                    b.Navigation("OtherInfos");
-
-                    b.Navigation("PostWorkInfos");
-
-                    b.Navigation("ReferanceInfos");
-
-                    b.Navigation("SkillInfos");
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }

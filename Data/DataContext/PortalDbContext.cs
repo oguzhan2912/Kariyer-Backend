@@ -12,12 +12,11 @@ namespace DataAccess.DataContext
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
         {
             optionsBuilder.UseSqlServer
-                (@"Server=STJ999;Database=PortalData;
-                Trusted_Connection=true;MultipleActiveResultSets=true");
-        }
-                
+                (@"Server=(LocalDB)\MSSQLLocalDB;Database=PORTALDB;
+                Trusted_Connection=true;MultipleActiveResultSets=true;User Id=oyanik; Password=Oguzhan2912");
+        }                
 
-        public DbSet<CV> CVs { get; set; }
+        
         public DbSet<General> Generals{ get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Education> Educations { get; set; }
@@ -25,9 +24,7 @@ namespace DataAccess.DataContext
         public DbSet<Referance> Referances { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<PostWork> PostWorks { get; set; }
-        public DbSet<Other> Others { get; set; }
-        public DbSet<EducationDegree> EducationDegrees { get; set; }
-        public DbSet<EducationPostDegree> EducationPostDegrees { get; set; }
+        public DbSet<Other> Others { get; set; }        
         public DbSet<User> Users { get; set; }
 
 

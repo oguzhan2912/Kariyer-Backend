@@ -18,8 +18,7 @@ namespace Entities.Concreate
         public DateTime CompletionDate { get; set; }
 
         /*Connections*/
-        public int? CVId { get; set; }
-        public virtual CV CVInfo { get; set; }
+
      
     }
 }

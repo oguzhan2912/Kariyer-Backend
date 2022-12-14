@@ -12,9 +12,7 @@ namespace Entities.Concreate
         public string SkillName { get; set; }
 
         /*Connections*/
-        public int? CVId { get; set; }
-        public virtual CV CVInfo { get; set; }
-        
+  
 
     }
 }

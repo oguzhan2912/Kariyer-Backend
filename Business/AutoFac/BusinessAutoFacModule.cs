@@ -15,8 +15,7 @@ namespace Business.AutoFac
           
            // builder.RegisterType<ApplicationUserService>().As<IApplicationUserService>();
             builder.RegisterType<ContactService>().As<IContactService>();
-            builder.RegisterType<EducationDegreeService>().As<IEducationDegreeService>();
-            builder.RegisterType<EducationPostDegreeService>().As<IEducationPostDegreeService>();
+           
             builder.RegisterType<EducationService>().As<IEducationService>();
             builder.RegisterType<GeneralService>().As<IGeneralService>();
             builder.RegisterType<LanguageService>().As<ILanguageService>();
@@ -28,8 +27,7 @@ namespace Business.AutoFac
 
            // builder.RegisterType<ApplicationUserDao>().As<IApplicationUserDao>();
             builder.RegisterType<ContactDao>().As<IContactDao>();
-            builder.RegisterType<EducationDegreeDao>().As<IEducationDegreeDao>();
-            builder.RegisterType<EducationPostDegreeDao>().As<IEducationPostDegreeDao>();
+
             builder.RegisterType<EducationDao>().As<IEducationDao>();
             builder.RegisterType<GeneralDao>().As<IGeneralDao>();
             builder.RegisterType<LanguageDao>().As<ILanguageDao>();

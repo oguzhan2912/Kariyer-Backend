@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Abstract\IEducationDegreeService.cs" />
+    <Compile Remove="Abstract\IEducationPostDegreeService.cs" />
+    <Compile Remove="Concreate\EducationDegreeService.cs" />
+    <Compile Remove="Concreate\EducationPostDegreeService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Autofac" Version="6.4.0" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />

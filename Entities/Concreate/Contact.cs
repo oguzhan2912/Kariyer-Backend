@@ -27,8 +27,7 @@ namespace Entities.Concreate
         public string General { get; set; }
 
         /*Connections*/
-        public int? CVId { get; set; }
-        public virtual CV CVInfo { get; set; }
+        
         
 
 

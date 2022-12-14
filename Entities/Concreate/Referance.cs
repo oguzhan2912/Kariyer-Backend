@@ -11,9 +11,7 @@ namespace Entities.Concreate
         public int ReferancePhoneNumber2 { get; set; }
 
         /*Connections*/
-        public int? CVId { get; set; }
-        public virtual CV CVInfo { get; set; }
-        
+     
 
        
 

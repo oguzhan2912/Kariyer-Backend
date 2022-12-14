@@ -7,7 +7,7 @@ namespace DataAccess.Abstract.UserLogin
 {
     public interface IUserDao:IEntityRepository<User>
     {
-        List<OperationClaim> GetClaims(User user, int cvId);
-        List<CV> GetUserCVList(string value);
+       // List<OperationClaim> GetClaims(User user, int cvId);
+        //List<CV> GetUserCVList(string value);
     }
 }

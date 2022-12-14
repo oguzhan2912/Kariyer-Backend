@@ -12,6 +12,13 @@ using Business.Concreate;
 using DataAccess.DataContext;
 using Autofac;
 using Business.AutoFac;
+using Business.Abstract;
+using Core.Utilities.Helpers.Jwt;
+using System.Configuration;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Business.Helpers;
 
 namespace deneme
 {
@@ -32,6 +39,11 @@ namespace deneme
             services.AddCors();
             services.AddControllers();                                 
             services.AddSwaggerGen();
+
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+
+            // configure DI for application services
+            services.AddScoped<IUserService, UserService>();
 
         }
 
@@ -69,7 +81,9 @@ namespace deneme
             app.UseAuthorization();
 
             app.UseAuthentication();
-           
+
+            app.UseMiddleware<JwtMiddleware>();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

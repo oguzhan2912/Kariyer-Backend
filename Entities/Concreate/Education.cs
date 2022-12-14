@@ -48,8 +48,7 @@ namespace Entities.Concreate
         public int GradeLevel { get; set; }
 
         /*Connections*/
-        public int? CVId { get; set; }
-        public virtual CV CVInfo { get; set; }   
+       
         
         /*
         public virtual ICollection<EducationDegree> EducationDegreeInfos { get; set; }

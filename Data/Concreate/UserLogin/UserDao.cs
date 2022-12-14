@@ -12,15 +12,11 @@ using System.Threading.Tasks;
 namespace DataAccess.Concreate.UserLogin
 {
     public class UserDao : EntityRepository<User, PortalDbContext>, IUserDao
-    {
-        public List<OperationClaim> GetClaims(User user, int cvId)
-        {
-            throw new NotImplementedException();
-        }
-
+    {       
+        /*
         public List<CV> GetUserCVList(string value)
         {
             throw new NotImplementedException();
-        }
+        }*/
     }
 }
